@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>The Beauty of Religion · Timothy Ivanov</title>
+<meta name="description" content="A culminating exploration of five world religions through the lens of beauty, ethics, and human meaning. By Timothy Ivanov, HRT 3M1." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,300..900,0..100,0..1;1,9..144,300..900,0..100,0..1&family=Spectral:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,600&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles/global.css" />
+<style>
+  /* ——— Home palette: ivory paper with sacred multi-hue accents ——— */
+  :root {
+    --paper: #f3ecdb;
+    --ink: #1d1815;
+    --rule: rgba(29, 24, 21, 0.2);
+    --muted: rgba(29, 24, 21, 0.6);
+    --c-hindu: #c54a1f;
+    --c-buddha: #8a3024;
+    --c-jewish: #1c3a6b;
+    --c-christ: #b08648;
+    --c-islam: #0e5c3a;
+  }
+
+  body {
+    background:
+      radial-gradient(ellipse at 15% -10%, rgba(176, 134, 72, 0.08), transparent 40%),
+      radial-gradient(ellipse at 100% 110%, rgba(28, 58, 107, 0.06), transparent 40%),
+      var(--paper);
+  }
+
+  /* ——— Hero / Title plate ——— */
+  .title-plate {
+    min-height: calc(100vh - 70px);
+    display: grid;
+    grid-template-columns: 1fr;
+    align-content: center;
+    padding: 4rem 2rem 6rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .title-plate::before {
+    content: "";
+    position: absolute; inset: 6%;
+    border: 1px solid var(--rule);
+    pointer-events: none;
+  }
+  .title-plate::after {
+    content: "";
+    position: absolute; inset: 7%;
+    border: 1px solid var(--rule);
+    pointer-events: none;
+    opacity: 0.5;
+  }
+  .plate-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+    position: relative;
+    z-index: 1;
+  }
+  .plate-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    border-bottom: 1px solid var(--rule);
+    padding-bottom: 1rem;
+    font-family: var(--font-mono);
+    font-size: 0.74rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .plate-meta span:nth-child(2) { font-style: italic; font-family: var(--font-display); text-transform: none; letter-spacing: 0.04em; font-size: 0.95rem; color: var(--ink); }
+
+  .title-mark {
+    font-family: var(--font-display);
+    font-weight: 300;
+    line-height: 0.92;
+    letter-spacing: -0.025em;
+    font-size: clamp(3.4rem, 11vw, 9.5rem);
+    font-variation-settings: "SOFT" 50, "WONK" 1, "opsz" 144;
+  }
+  .title-mark .of {
+    font-style: italic;
+    font-weight: 400;
+    color: var(--c-buddha);
+    display: inline-block;
+    margin: 0 0.15em;
+  }
+  .title-mark .religion {
+    display: block;
+    font-weight: 500;
+    background: linear-gradient(90deg, var(--c-hindu) 0%, var(--c-buddha) 25%, var(--c-jewish) 50%, var(--c-christ) 75%, var(--c-islam) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .plate-meta-bottom {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    padding-top: 1.6rem;
+    border-top: 1px solid var(--rule);
+  }
+  .plate-meta-bottom .cell .lbl {
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 0.3rem;
+  }
+  .plate-meta-bottom .cell .val {
+    font-family: var(--font-display);
+    font-size: 1.05rem;
+    font-style: italic;
+  }
+
+  .scroll-hint {
+    position: absolute;
+    bottom: 1.5rem; left: 50%;
+    transform: translateX(-50%);
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--muted);
+    display: flex; flex-direction: column; align-items: center; gap: 0.5rem;
+    z-index: 2;
+  }
+  .scroll-hint::after {
+    content: ""; width: 1px; height: 36px;
+    background: linear-gradient(to bottom, currentColor, transparent);
+  }
+
+  /* ——— Foreword ——— */
+  .foreword {
+    max-width: 760px;
+    margin: 6rem auto;
+    padding: 0 2rem;
+    text-align: center;
+  }
+  .foreword .eyebrow { display: block; margin-bottom: 1.5rem; }
+  .foreword p {
+    font-family: var(--font-accent);
+    font-size: clamp(1.4rem, 2.5vw, 1.85rem);
+    line-height: 1.5;
+    font-style: italic;
+    color: var(--ink);
+  }
+  .foreword .signature {
+    margin-top: 2rem;
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 1.05rem;
+    color: var(--muted);
+  }
+
+  /* ——— Table of Contents ——— */
+  .toc-section {
+    max-width: 1240px;
+    margin: 5rem auto;
+    padding: 0 2rem;
+  }
+  .toc-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    border-bottom: 2px solid var(--ink);
+    padding-bottom: 1.25rem;
+    margin-bottom: 0;
+  }
+  .toc-head h2 {
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-style: italic;
+    letter-spacing: -0.01em;
+  }
+  .toc-head .count {
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    letter-spacing: 0.22em;
+    color: var(--muted);
+    text-transform: uppercase;
+  }
+
+  .toc-list { list-style: none; }
+  .toc-row {
+    display: grid;
+    grid-template-columns: 60px 1fr auto auto;
+    gap: 2rem;
+    align-items: center;
+    padding: 2.2rem 0.5rem;
+    border-bottom: 1px solid var(--rule);
+    transition: background 0.4s ease, padding-left 0.4s ease;
+    position: relative;
+    overflow: hidden;
+  }
+  .toc-row::before {
+    content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 4px;
+    background: var(--accent, transparent);
+    transform: scaleY(0);
+    transform-origin: bottom;
+    transition: transform 0.5s cubic-bezier(0.65, 0, 0.35, 1);
+  }
+  .toc-row:hover {
+    padding-left: 1.5rem;
+    background: rgba(255, 255, 255, 0.35);
+  }
+  .toc-row:hover::before { transform: scaleY(1); transform-origin: top; }
+  .toc-row .num {
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    color: var(--accent);
+    letter-spacing: 0.1em;
+  }
+  .toc-row .title-block .name {
+    font-family: var(--font-display);
+    font-size: clamp(1.6rem, 3.2vw, 2.4rem);
+    font-weight: 400;
+    line-height: 1.05;
+    letter-spacing: -0.015em;
+    transition: color 0.3s ease;
+  }
+  .toc-row:hover .title-block .name { color: var(--accent); font-style: italic; }
+  .toc-row .title-block .sub {
+    font-family: var(--font-accent);
+    font-style: italic;
+    font-size: 1.05rem;
+    color: var(--muted);
+    margin-top: 0.25rem;
+  }
+  .toc-row .task {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.22em;
+    color: var(--muted);
+  }
+  .toc-row .arrow {
+    font-family: var(--font-display);
+    font-size: 1.8rem;
+    color: var(--accent);
+    transition: transform 0.45s cubic-bezier(0.65, 0, 0.35, 1);
+  }
+  .toc-row:hover .arrow { transform: translateX(8px); }
+
+  .toc-row[data-r="hindu"]   { --accent: var(--c-hindu); }
+  .toc-row[data-r="buddha"]  { --accent: var(--c-buddha); }
+  .toc-row[data-r="jewish"]  { --accent: var(--c-jewish); }
+  .toc-row[data-r="christ"]  { --accent: var(--c-christ); }
+  .toc-row[data-r="islam"]   { --accent: var(--c-islam); }
+
+  @media (max-width: 760px) {
+    .toc-row { grid-template-columns: 40px 1fr auto; gap: 1rem; padding: 1.4rem 0.3rem; }
+    .toc-row .task { display: none; }
+    .plate-meta-bottom { grid-template-columns: 1fr; gap: 0.9rem; }
+    .scroll-hint { display: none; }
+  }
+
+  /* ——— Closing card ——— */
+  .closing {
+    max-width: 1240px;
+    margin: 6rem auto 0;
+    padding: 3rem 2rem;
+    text-align: center;
+    border-top: 1px solid var(--rule);
+  }
+  .closing .quote {
+    font-family: var(--font-accent);
+    font-style: italic;
+    font-size: clamp(1.3rem, 2.4vw, 1.7rem);
+    line-height: 1.5;
+    max-width: 720px;
+    margin: 0 auto 1rem;
+  }
+  .closing .attribution {
+    font-family: var(--font-display);
+    font-size: 0.95rem;
+    letter-spacing: 0.05em;
+    color: var(--muted);
+  }
+</style>
+</head>
+<body>
+
+<nav class="site-nav">
+  <div class="brand">
+    <a href="index.html">
+      <span class="ornament"></span>
+      <span>The Beauty of Religion</span>
+    </a>
+  </div>
+  <ul>
+    <li><a href="index.html" class="active">Home</a></li>
+    <li><a href="hinduism.html">Hinduism</a></li>
+    <li><a href="buddhism.html">Buddhism</a></li>
+    <li><a href="judaism.html">Judaism</a></li>
+    <li><a href="christianity.html">Christianity</a></li>
+    <li><a href="islam.html">Islam</a></li>
+    <li><a href="works-cited.html">Sources</a></li>
+  </ul>
+</nav>
+
+<header class="title-plate">
+  <div class="plate-grid">
+
+    <div class="plate-meta">
+      <span>HRT 3M1 · Culminating Performance Task</span>
+      <span>vol. i</span>
+      <span>Spring · MMXXVI</span>
+    </div>
+
+    <h1 class="title-mark">
+      The Beauty<span class="of">of</span><br/>
+      <span class="religion">Religion.</span>
+    </h1>
+
+    <div class="plate-meta-bottom">
+      <div class="cell">
+        <div class="lbl">Curated by</div>
+        <div class="val">Timothy Ivanov</div>
+      </div>
+      <div class="cell">
+        <div class="lbl">Five Faiths</div>
+        <div class="val">Hindu · Buddhist · Jewish · Christian · Muslim</div>
+      </div>
+      <div class="cell">
+        <div class="lbl">A study of the sacred,</div>
+        <div class="val">the ethical, and the beautiful.</div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="scroll-hint">Continue reading</div>
+</header>
+
+<section class="foreword reveal">
+  <span class="eyebrow">— Foreword —</span>
+  <p>
+    To study religion is to study how human beings have answered the largest questions ever asked &mdash; what is good, what is true, what is real, and what makes a life worth living. The five traditions in this collection do not always agree. They do, however, share something important: each one believes that a life lived without meaning is a life half lived.
+  </p>
+  <div class="signature">— T.I.</div>
+</section>
+
+<section class="toc-section">
+  <div class="toc-head">
+    <h2>Table of Contents</h2>
+    <span class="count">Five entries</span>
+  </div>
+
+  <ul class="toc-list">
+    <li class="toc-row reveal" data-r="hindu">
+      <a href="hinduism.html" style="display:contents;">
+        <span class="num">01</span>
+        <div class="title-block">
+          <div class="name">Hinduism</div>
+          <div class="sub">An infographic on dharma &amp; the climate</div>
+        </div>
+        <span class="task">Scientific Infographic</span>
+        <span class="arrow">&rarr;</span>
+      </a>
+    </li>
+
+    <li class="toc-row reveal" data-r="buddha">
+      <a href="buddhism.html" style="display:contents;">
+        <span class="num">02</span>
+        <div class="title-block">
+          <div class="name">Buddhism</div>
+          <div class="sub">A reflection on suffering &amp; impermanence</div>
+        </div>
+        <span class="task">Wisdom Text Reflection</span>
+        <span class="arrow">&rarr;</span>
+      </a>
+    </li>
+
+    <li class="toc-row reveal" data-r="jewish">
+      <a href="judaism.html" style="display:contents;">
+        <span class="num">03</span>
+        <div class="title-block">
+          <div class="name">Judaism</div>
+          <div class="sub">A profile of Drake, son of Forest Hill</div>
+        </div>
+        <span class="task">Famous Person Profile</span>
+        <span class="arrow">&rarr;</span>
+      </a>
+    </li>
+
+    <li class="toc-row reveal" data-r="christ">
+      <a href="christianity.html" style="display:contents;">
+        <span class="num">04</span>
+        <div class="title-block">
+          <div class="name">Christianity</div>
+          <div class="sub">The Sagrada Família &amp; Aquinas&rsquo; transcendentals</div>
+        </div>
+        <span class="task">Analysis of the Beautiful</span>
+        <span class="arrow">&rarr;</span>
+      </a>
+    </li>
+
+    <li class="toc-row reveal" data-r="islam">
+      <a href="islam.html" style="display:contents;">
+        <span class="num">05</span>
+        <div class="title-block">
+          <div class="name">Islam</div>
+          <div class="sub">A traveller&rsquo;s brochure to the holy cities of Saudi Arabia</div>
+        </div>
+        <span class="task">Travel Brochure</span>
+        <span class="arrow">&rarr;</span>
+      </a>
+    </li>
+  </ul>
+</section>
+
+<section class="closing reveal">
+  <p class="quote">
+    &ldquo;The day science begins to study non-physical phenomena, it will make more progress in one decade than in all the previous centuries of its existence.&rdquo;
+  </p>
+  <div class="attribution">— attributed to Nikola Tesla</div>
+</section>
+
+<footer class="site-foot">
+  <span class="colophon">Set in Fraunces, Spectral &amp; Cormorant Garamond. Built with care.</span>
+  <span class="pageno">Folio · 001</span>
+</footer>
+
+<script src="scripts/reveal.js"></script>
+</body>
+</html>
